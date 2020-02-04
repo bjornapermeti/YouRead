@@ -1,0 +1,57 @@
+<ul class="nav">
+  <!-- E-MAIL -->
+  <li class="nav-item">
+    <a class="btn btn-link" style="width: 100%; text-align: left;" href="{{ url_for('update_email') }}">
+      <i class="material-icons">email</i>
+      E-mail
+    </a>
+    <br>
+  </li>
+
+  <!-- NAME -->
+  <li class="nav-item">
+    <a class="btn btn-link" style="width: 100%; text-align: left;" href="{{ url_for('update_name') }}">
+      <i class="material-icons">account_circle</i>
+      Name
+    </a>
+    <br>
+  </li>
+
+
+  <!-- PASSWORD -->
+  <li class="nav-item">
+    <a class="btn btn-link" style="width: 100%; text-align: left;" href="{{ url_for('update_password') }}">
+      <i class="material-icons">vpn_key</i>
+      Password
+    </a>
+    <br>
+  </li>
+
+  <div class="divider"></div>
+  <li class="nav-item">
+    <a class="btn btn-link" style="width: 100%; text-align: left;" href="#delete-account">
+      <i class="material-icons">delete</i>
+      Delete Account
+    </a>
+
+    <div class="modal modal-sm" id="delete-account">
+      <a href="#close" class="modal-overlay" aria-label="Close"></a>
+      <div class="modal-container">
+        <div class="modal-header">
+          <a href="#close" class="btn btn-clear float-right" aria-label="Close"></a>
+          <div class="modal-title h5">Deleting account</div>
+        </div>
+        <div class="modal-body">
+          <div class="content">
+            <p>Are you sure you want to proceed with deleting your account {{current_user.name}}?</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="{{ url_for('delete_account', user_email=user.email) }}"
+            class="btn btn-link bg-error text-light">Confirm Deletion</a>
+        </div>
+      </div>
+    </div>
+    <br>
+  </li>
+</ul>

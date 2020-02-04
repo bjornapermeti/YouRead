@@ -1,0 +1,23 @@
+<form method="post" class="form">
+    <div class="">
+        {{ form.hidden_tag() }}
+        {{ form.name(class_ = 'form-input h-input', value = user.name) }}
+        <br>
+        {{ form.email(class_ = 'form-input h-input', value = user.email) }}
+        <br>
+        {{ form.password(class_ = 'form-input h-input', placeholder = "new password") }}
+        <br>
+        {{ form.verify_password(class_ = 'form-input h-input', placeholder = "verify new password") }}
+        <br>
+        {% if current_user == 'admin' %}
+            {{ form.user_type(class_ = 'form-input h-input', value = user.user_type) }}
+        {% endif %}
+        <br>
+        <br>
+        <div class="text-right">
+            <a class="btn btn-link" href="{{url_for('admin_users')}}">Go Back</a>
+            <input type="submit" value="Update" class="btn">
+
+        </div>
+    </div>
+</form>

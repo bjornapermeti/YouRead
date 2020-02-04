@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap');
+
+/* Variables to use accross component styles */
+:root {
+    --primary-color: blue;
+    --roboto: 'Roboto Slab', serif;
+    --box-shadow-1: 0 2px 5px 0 rgba(19,41,104,.2);
+    --box-shadow-2: 0 0px 20px 0 rgba(19,41,104,.2);
+    --light-blue: #bcd5fc;
+    --light-orange:#e16464;
+}
+
+
+/*****************************************************************************
+ * Main elements
+ ****************************************************************************/
+#content {
+    padding-top: 42px;
+}
+.container-nav {
+    max-width: 1000px;
+    width: 1000px;
+    margin: auto;
+    display: inherit;
+}
+.container-lg {
+    max-width: 1000px;
+    margin: auto;
+}
+.container-xl {
+    max-width: 1400px;
+    padding: 42px 15px;
+    margin: auto;
+}
+.navbar {
+    height: 55px;
+    border: none;
+    background-color: white;
+    box-shadow: var(--box-shadow-1);
+    position: sticky;
+    top: 0px;
+    z-index: 1000;
+}
+.navbar-brand{
+    font-family: var(--roboto);
+    font-size: .9rem;
+    text-decoration: none;
+    color: var(--primary-color) !important;
+    font-weight: 900;
+    border: solid 3px;
+    padding: 5px 12px;
+    border-radius: 8px;
+}
+.btn {
+    border: .05rem solid var(--primary-color);
+    border-radius: 8px;
+}
+a {
+    color: var(--primary-color) !important;
+}
+i {
+    margin-right: 10px;
+}
+#message {
+    position: absolute;
+    top: 70px;
+    right: 30px;
+    z-index: 100;
+    width: 350px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow-2);
+}
+#message .material-icons {
+    color: inherit;
+    margin-top: -3px;
+    font-size: 24px !important;
+    vertical-align: middle;
+}
+.message-success {
+    background-color: var(--light-blue);
+    color: black;
+}
+.message-error {
+    background-color: var(--light-orange);
+    color: white;
+}
+.h-input {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: 15px;
+}
+.h-input:focus {
+    border: solid 2px var(--primary-color);
+}
+
+.hero.hero-lg {
+    margin-top: -42px;
+    background: url('/static/assets/hero-bg.png') !important;
+    background-size: 100% 100%, cover;
+    justify-content: center;
+    background-repeat: no-repeat, no-repeat;
+    background-position: center, center;
+}
+
+/* BOOK CLASSES */
+.book {
+    display: flex;
+    justify-content: space-between;
+    max-height: 140px;
+    height: 140px;
+    padding: 10px;
+    box-shadow: var(--box-shadow-2);
+    margin: 10px;
+    border-radius: 8px;
+    font-family: var(--roboto);
+}
+.book-profile-rating {
+    display: flex;
+}
+.book-profile-rating .material-icons {
+    margin-right: 5px;
+}
+.book .card-title a {
+    color: black !important;
+    font-size: 18px;
+}
+
+.rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    display: inline-flex;
+  }
+.rating > span {
+    font-size: 31px;
+    display: inline-block;
+    position: relative;
+    width: 1.1em;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+    content: "\2605";
+    color: var(--primary-color);
+    position: absolute;
+}
+
+.book-cover {
+    max-height: inherit;
+    max-width: inherit;
+}
+.book-cover img {
+    height: 100%;
+    max-height: 100%;
+    margin-right: 0px;
+    border-radius: 4px;
+}
+.book-profile-cover {
+    width: 100%;
+    border: solid 1px gainsboro;
+    padding: 3px;
+    border-radius: 4px;
+}
+.book-profile-title {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.book-profile-authors {
+    font-family: 'Roboto Slab', serif;
+    font-size: 18px;
+}
+.book-action {
+    text-align: right;
+    width: 100%;
+    margin-right: 0;
+}
+.actionBookIcon {
+    color: green !important;
+    margin-left: 5px;
+}
+.pagination {
+    align-items: center;
+    justify-content: center;
+}
+
+.panel-box {
+    border: solid 1px #f3f3f3;
+    padding: 25px 15px;
+}
+.right-panel {
+    text-align: right;
+}
+.dropdown .menu {
+    text-align: left;
+    width: 100%;
+}
+.dropdown a:hover {
+    background-color: lavender;
+}
+.menu-item{
+    cursor: pointer;
+}
+.menu-item a span {
+    display: inline-flex !important;
+    margin-top: 1px;
+    margin-bottom: -1px;
+    font-size: 15px;
+    color: black !important;
+}
+.menu-item:hover, .menu-item .active {
+    background-color: lavender;
+    border-radius: 4px;
+}
+
+.menu-item:hover .material-icons{
+    color: var(--primary-color);
+}
+
+.nav-item {
+    margin-top: 0px !important;
+}
+.nav-item a {
+    display: inline-flex;
+    font-size: 15px;
+    color: black !important;
+}
+.nav-item:hover, .nav-item .active {
+    background-color: lavender;
+    border-radius: 4px;
+}
+.material-icons {
+    color: #d3d3d3;
+    margin-right: 15px;
+    font-size: 21px !important;
+    margin-top: 1px;
+}
+.nav-item:hover .material-icons{
+    color: var(--primary-color);
+}
+
+.section-header {
+    font-family: var(--roboto);
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 21px;
+    margin-left: 10px;
+    border-left: solid 10px lavender;
+    padding-left: 15px;
+}
+.action-header {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 0px;
+    border-right: solid 10px lavender;
+    padding-right: 15px;
+}
+
+
+/* UTILS */
+.mr-top-15 {
+    margin-top: 15px;
+}
+.mr-top-30 {
+    margin-top: 30px;
+}
+.mr-bottom-30 {
+    margin-bottom: 30px;
+}
+
+.centered {
+    margin: auto;
+}
+.roboto-slab {
+    font-family: var(--roboto);
+}
+.section {
+    margin-bottom: 42px;
+}
+.text-right {
+    text-align: right;
+}

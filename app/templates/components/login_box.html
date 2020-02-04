@@ -1,0 +1,29 @@
+<div class="card">
+    <div class="card-header">
+        <div class="card-title h5 text-dark">Register because YouRead</div>
+        <div class="card-subtitle text-gray">... read, rate and get recommended great books</div>
+    </div>
+    <div class="card-body">
+
+        <form class="form-horizontal" method="post" action="/login">
+            <div class="form-group">
+                <div class="col-3 col-sm-12">
+                    <label class="form-label text-dark" for="input-example-1">E-mail</label>
+                </div>
+                <div class="col-9 col-sm-12">
+                    {{ form.email(class_ = 'form-input', placeholder = form.email.label.text, required = true, autofocus = true) }}
+                </div>
+
+                <div class="col-3 col-sm-12">
+                    <label class="form-label text-dark" for="input-example-1">Password</label>
+                </div>
+                <div class="col-9 col-sm-12">
+                    {{ form.password(class_ = 'form-input', placeholder = form.password.label.text, required = true) }}
+                </div>
+                <br />
+                <input type="submit" value="Login" class="btn btn-primary">
+
+            </div>
+        </form>
+    </div>
+</div>

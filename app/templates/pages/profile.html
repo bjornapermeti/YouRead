@@ -1,0 +1,116 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Profile | {{current_user.name}}{% endblock %}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+
+<div class="container-lg">
+  <div class="columns">
+    <div class="column col-3">
+      <div class="panel-box">
+        <div>
+          <div class="text-center">
+            <figure class="avatar avatar-lg" data-initial="{{current_user.name | first_letter}}"
+              style="background-color: #5755d9;">
+              <i class="avatar-presence online"></i>
+            </figure>
+            <h5 class="mr-top-15 roboto-slab">{{current_user.name | capitalize }}</h5>
+            <div class="divider mr-top-30"></div>
+          </div>
+
+          {% include "components/profile/side_nav.html" %}
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+    <div class="column col-9">
+      {% if request.path == '/profile' %}
+
+      {% if books | length == 0 %}
+{% include "components/no_books_banner.html" %}
+      {% endif %}
+
+      {% if want_to_read | length > 0 %}
+      <div class="section">
+        <div class="section-header">Want to Read</div>
+        <div class="columns">
+          {% for book in want_to_read %}
+          <div class="column col-6">
+            {% include "components/book-card-horizontal.html" %}
+          </div>
+          {% endfor %}
+        </div>
+
+        {% if want_to_read | length > 3 %}
+        <div>
+          <a class="text-right" href="{{ url_for('want_to_read') }}">See all</a>
+        </div>
+        {% endif %}
+
+      </div>
+      {% endif %}
+
+
+      {% if currently_reading | length > 0 %}
+      <div class="section">
+        <div class="section-header">Currently Reading</div>
+        <div class="columns">
+          {% for book in currently_reading %}
+          <div class="column col-6">
+            {% include "components/book-card-horizontal.html" %}
+          </div>
+          {% endfor %}
+          {% if currently_reading | length > 4 %}
+          <div class="text-right"><a href="{{ url_for('currently_reading') }}">See all</a></div>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
+
+
+      {% if read | length > 0 %}
+      <div class="section">
+        <div class="section-header">Read</div>
+        <div class="columns">
+          {% for book in read %}
+          <div class="column col-6">
+            {% include "components/book-card-horizontal.html" %}
+          </div>
+          {% endfor %}
+          {% if read | length > 4 %}
+          <div class="text-right"><a href="{{ url_for('read') }}">See all</a></div>
+          {% endif %}
+
+        </div>
+      </div>
+      {% endif %}
+
+      {% endif %}
+
+
+
+      {% if request.path == '/profile/want_to_read' %}
+      <div class="section-header">Want to Read</div>
+      {% include "components/profile/book_section.html" %}
+      {% endif %}
+
+      {% if request.path == '/profile/currently_reading' %}
+      <div class="section-header">Currently Reading</div>
+      {% include "components/profile/book_section.html" %}
+      {% endif %}
+
+      {% if request.path == '/profile/read' %}
+      <div class="section-header">Read</div>
+      {% include "components/profile/book_section.html" %}
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+
+{% endif %}
+{% endblock %}

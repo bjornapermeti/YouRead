@@ -1,0 +1,14 @@
+<form method="post" class="form">
+    <div class="">
+        {{ form.hidden_tag() }}
+        {{ form.email(class_ = 'form-input h-input', placeholder=form.email.label.text, value=user.email, autofocus=True) }}
+        <br>
+        {{ form.password(class_ = 'form-input h-input', placeholder=form.password.label.text) }}
+        <br>
+        <div class="text-right">
+            <a class="btn btn-link" href="{{url_for('account')}}">Go Back</a>
+            <input type="submit" value="Update" class="btn">
+
+        </div>
+    </div>
+</form>

@@ -1,0 +1,8 @@
+<form action="/login" method="post">
+  <div class="input-group">
+    {{ form.hidden_tag() }}
+    {{ form.email(class_ = 'form-input h-input', placeholder = form.email.label.text, required = true ) }}
+    {{ form.password(class_ = 'form-input h-input', placeholder = form.password.label.text, required = true) }}
+    <input class="btn" type="submit" value="Log In">
+  </div>
+</form>

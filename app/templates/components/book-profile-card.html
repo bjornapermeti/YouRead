@@ -1,0 +1,20 @@
+<div class="book-profile">
+  <div class="columns">
+    <div class="column col-3">
+      <img class="book-profile-cover" src="{{book.image_url}}">
+    </div>
+    <div class="column col-9">
+      <h2 class="book-profile-title">{{book.original_title}}</h2>
+      <p class="book-profile-authors">by {{book.authors}}</p>
+      <div class="divider"></div>
+      <p class="book-profile-rating">
+        <i class="material-icons">star</i>
+        {{book.average_rating}} ({{book.ratings_count | humanize_number}} ratings)</p>
+      <div>
+        {% for tag in book.tags %}
+        <span class="chip">{{tag}}</span>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

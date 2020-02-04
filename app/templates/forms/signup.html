@@ -1,0 +1,31 @@
+<form class="form-horizontal" method="post" action="/signup">
+    {{ form.hidden_tag() }}
+
+    <div class="form-group">
+        <div class="col-3 col-sm-12 mr-top-15">
+            <label class="form-label text-dark" for="input-example-1">Name</label>
+        </div>
+        <div class="col-9 col-sm-12 mr-top-15">
+            {{ form.name(class_ = 'form-input h-input', placeholder = form.name.label.text, required = true) }}
+        </div>
+
+        <div class="col-3 col-sm-12 mr-top-15">
+            <label class="form-label text-dark" for="input-example-1">E-mail</label>
+        </div>
+        <div class="col-9 col-sm-12 mr-top-15">
+            {{ form.email(class_ = 'form-input h-input', placeholder = form.email.label.text, required = true) }}
+        </div>
+
+
+        <div class="col-3 col-sm-12 mr-top-15">
+            <label class="form-label text-dark" for="input-example-1">Password</label>
+        </div>
+        <div class="col-9 col-sm-12 mr-top-15">
+            {{ form.password(class_ = 'form-input h-input', placeholder = form.password.label.text, required = true) }}
+        </div>
+
+        <br />
+        <br />
+        <input type="submit" value="Signup" class="btn btn-primary mr-top-15">
+    </div>
+</form>

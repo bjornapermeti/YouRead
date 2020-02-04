@@ -1,0 +1,46 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+
+
+{% else %}
+<!-- {% include "components/login_box.html" %} -->
+
+<div class="hero hero-lg bg-dark">
+  <div class="hero-body">
+
+    <div class="columns container-lg">
+      <div class="column col-6">
+        <br />
+        <br />
+        <h1 class="text-bold roboto-slab">Once you learn to read, you will be forever free</h1>
+        <h5 class="roboto-slab">- Frederick Douglass</h1>
+
+      </div>
+      <div class="column col-6">
+
+        <!-- TODO: Add Tab for both signup and login -->
+        {% include "components/signup_box.html" %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+
+<!-- BOOKS SAMPLE -->
+<div class="container-xl">
+  <div class="columns">
+    {% for book in books %}
+    <div class="column col-4">
+      {% include "components/book-card-horizontal.html" %}
+    </div>
+    {% endfor %}
+  </div>
+  <div class="centered">
+      {% include "components/pagination.html" %}
+  </div>
+</div>
+{% endblock %}

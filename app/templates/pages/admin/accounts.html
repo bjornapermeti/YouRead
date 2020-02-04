@@ -1,0 +1,38 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Accounts{% endblock %}
+
+
+{% block content %}
+<div class="container-lg">
+  <div class="columns">
+    <div class="column col-3">
+      {% include "components/admin/side_nav.html" %}
+
+    </div>
+
+    <div class="column col-8">
+      <div class="panel-body">
+
+        {% if request.path == '/admin' %}
+        {% include "components/admin/stats.html" %}
+        {% endif %}
+
+        {% if request.path == '/admin/users' %}
+        {% include "components/admin/user_table.html" %}
+        {% endif %}
+
+        {% if request.path == '/admin/accounts/add' %}
+        {% include "forms/signup.html" %}
+        {% endif %}
+
+        {% if request.path | edit_user_acc %}
+        {% include "components/account/edit_user.html" %}
+        {% endif %}
+
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

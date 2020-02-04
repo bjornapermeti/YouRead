@@ -1,0 +1,89 @@
+{% extends 'layouts/main.html' %}
+{% block title %}
+Book | {{book.original_title}}
+{% endblock %}
+
+{% block content %}
+
+<div class="container-lg">
+  <div class="columns">
+    <div class="column col-8">
+      <div>
+        {% include "components/book-profile-card.html" %}
+      </div>
+    </div>
+
+    <div class="column col-4 col-md-9">
+      {% if current_user.is_authenticated %}
+      <div class="right-panel">
+        <div class="action-header">Library</div>
+        <br />
+        <div class="dropdown">
+          <div class="btn-group">
+            {% if reading_state[0] is not none %}
+            <a class="btn text-dark" id="book-action" style="width: 200px; display: inline-flex"><i
+                class="material-icons actionBookIcon">check</i>{{reading_state[1]}}</a>
+            {% else %}
+            <a class="btn btn-primary text-light" id="book-action" style="width: 200px">Want to read</a>
+            {% endif %}
+
+            <a class="btn btn-primary dropdown-toggle text-light" style="width: 40px" tabindex="0">
+              <i class="material-icons">keyboard_arrow_down</i>
+           </a>
+            <ul class="menu">
+              <li class="menu-item" onclick="submitChoice(0)"><a>Want to read</a></li>
+              <li class="menu-item" onclick="submitChoice(1)"><a>Currently reading</a></li>
+              <li class="menu-item" onclick="submitChoice(2)"><a>Read</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+      {% else %}
+      <div class="form-group tooltip" data-tooltip="You need to be logged in">
+        <select class="form-select" disabled>
+          <option>Want to read</option>
+          <option>Currently Reading</option>
+          <option>Read</option>
+        </select>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-header">Similar Books</div>
+    <div class="columns">
+      {% for book in similar_books %}
+      <div class="column col-4">
+        {% include 'components/book-card-horizontal.html' %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+
+</div>
+
+
+<!-- TODO: Show Read / Want to Read and other actionables -->
+{% if current_user.is_authenticated %}
+<script type="text/javascript">
+  function submitChoice(choice) {
+    const url = "{{url_for('add_book')}}";
+    const data = { book_id: parseInt('{{book.book_id}}'), readingState: choice };
+
+    fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json())
+      .then(response => window.location.reload())
+      .catch(error => console.error('Error:', error));
+  }
+</script>
+{% endif %}
+{% endblock %}

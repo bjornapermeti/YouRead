@@ -1,0 +1,10 @@
+<div class="book">
+    <div class="book-metadata">
+        <div class="card-title h6"><a href="{{ url_for('book', book_id=book.book_id) }}">{{book.original_title}}</a>
+        </div>
+        <div class="card-subtitle text-gray">{{book.authors}}</div>
+    </div>
+    <div class="book-cover">
+        <img src="{{book.image_url}}">
+    </div>
+</div>

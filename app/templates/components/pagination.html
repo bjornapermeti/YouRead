@@ -1,0 +1,38 @@
+<ul class="pagination">
+  <li class="page-item disabled">
+    <div class="btn btn-link" onclick="decrementPageIndex()" tabindex="-1">Previous</div>
+  </li>
+  <li class="page-item">
+    <div class="btn btn-link" onclick="incrementPageIndex()">Next</div>
+  </li>
+</ul>
+
+<script type="text/javascript">
+
+  function decrementPageIndex() {
+    const urlGetParams = new URLSearchParams(location.search);
+    try {
+      let currentPage = parseInt(urlGetParams.get("page"));
+      if (!currentPage) {
+        currentPage = 1;
+      }
+      location.href = `{{ url_for('explore') }}?page=${currentPage - 1}`;
+    } catch (e) {
+      console.log('Pagination Error: ', e);
+    }
+  }
+
+  function incrementPageIndex() {
+    const urlGetParams = new URLSearchParams(location.search);
+    try {
+      let currentPage = parseInt(urlGetParams.get("page"));
+      if (!currentPage) {
+        currentPage = 1;
+      }
+      location.href = `{{ url_for('explore') }}?page=${currentPage + 1}`;
+    } catch (e) {
+      console.log('Pagination Error: ', e);
+    }
+  }
+
+</script>

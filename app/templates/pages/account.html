@@ -1,0 +1,54 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+
+<div class="container-lg">
+  <div class="columns">
+    <div class="column col-4">
+      <div class="panel-box">
+
+        <div>
+          <div class="text-center">
+            <figure class="avatar avatar-lg" data-initial="{{current_user.name | first_letter}}" style="background-color: #5755d9;">
+              <i class="avatar-presence online"></i>
+            </figure>
+            <h5 class="mr-top-15 roboto-slab">{{current_user.name | capitalize }}</h5>
+            <div class="divider mr-top-30"></div>
+          </div>
+
+          {% include "components/account/side_nav.html" %}
+        </div>
+      </div>
+    </div>
+
+    <div class="column col-8">
+      <div class="panel-box">
+
+        {% if request.path == '/account' %}
+        {% include "components/account/details.html" %}
+        {% endif %}
+
+        {% if request.path == '/account/update_password' %}
+        {% include "components/account/password.html" %}
+        {% endif %}
+
+
+        {% if request.path == '/account/update_email' %}
+        {% include "components/account/email.html" %}
+        {% endif %}
+
+        {% if request.path == '/account/update_name' %}
+        {% include "components/account/name.html" %}
+        {% endif %}
+
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+{% endif %}
+{% endblock %}
